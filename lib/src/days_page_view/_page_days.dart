@@ -6,9 +6,9 @@ import 'package:calendar_views/src/_internal_date_time/all.dart';
 @immutable
 class PageDays {
   PageDays({
-    @required this.initialPage,
-    @required this.firstDayOfInitialPage,
-    @required this.daysPerPage,
+    required this.initialPage,
+    required this.firstDayOfInitialPage,
+    required this.daysPerPage,
   })  : assert(initialPage != null),
         assert(firstDayOfInitialPage != null),
         assert(daysPerPage != null && daysPerPage > 0);

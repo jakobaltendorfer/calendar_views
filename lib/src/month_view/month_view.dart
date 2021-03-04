@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 import 'package:calendar_views/src/_internal_date_time/all.dart';
 
@@ -11,17 +10,13 @@ import 'month_view_header_item_builder.dart';
 /// Widget for displaying a grid of days of some [month] and optionally a header.
 class MonthView extends StatefulWidget {
   MonthView({
-    @required this.month,
+    required this.month,
     this.firstWeekday = DateTime.monday,
-    @required this.dayOfMonthBuilder,
+    required this.dayOfMonthBuilder,
     this.headerItemBuilder,
     this.showExtendedDaysBefore = true,
     this.showExtendedDaysAfter = true,
-  })  : assert(month != null),
-        assert(firstWeekday != null && isWeekdayValid(firstWeekday)),
-        assert(dayOfMonthBuilder != null),
-        assert(showExtendedDaysBefore != null),
-        assert(showExtendedDaysAfter != null);
+  })  : assert(isWeekdayValid(firstWeekday));
 
   /// Month of which days to display.
   final DateTime month;
@@ -35,7 +30,7 @@ class MonthView extends StatefulWidget {
   /// Function that builds a header item.
   ///
   /// If null, a header won't be displayed.
-  final MonthViewHeaderItemBuilder headerItemBuilder;
+  final MonthViewHeaderItemBuilder? headerItemBuilder;
 
   /// If true extended days before [month] will be shown.
   ///
@@ -52,8 +47,8 @@ class MonthView extends StatefulWidget {
 }
 
 class _MonthViewState extends State<MonthView> {
-  List<int> _weekdays;
-  List<DayOfMonth> _days;
+  late List<int> _weekdays;
+  late List<DayOfMonth> _days;
 
   bool get _shouldBuildHeader => widget.headerItemBuilder != null;
 
@@ -100,7 +95,7 @@ class _MonthViewState extends State<MonthView> {
   }
 
   List<List<DayOfMonth>> _makeWeeks() {
-    List<List<DayOfMonth>> weeks = new List();
+    List<List<DayOfMonth>> weeks = [];
 
     for (int i = 0; i < _days.length; i += DateTime.daysPerWeek) {
       weeks.add(
@@ -137,7 +132,7 @@ class _MonthViewState extends State<MonthView> {
         children: _weekdays
             .map(
               (weekday) => new Expanded(
-                    child: widget.headerItemBuilder(context, weekday),
+                    child: widget.headerItemBuilder!(context, weekday),
                   ),
             )
             .toList(),

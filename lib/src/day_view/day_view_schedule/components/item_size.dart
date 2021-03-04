@@ -6,8 +6,8 @@ import 'package:calendar_views/day_view.dart';
 @immutable
 class ItemSize {
   ItemSize({
-    @required this.width,
-    @required this.height,
+    required this.width,
+    required this.height,
   })  : assert(width != null && width >= 0),
         assert(height != null && height >= 0);
 

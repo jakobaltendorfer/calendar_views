@@ -8,11 +8,11 @@ import 'package:calendar_views/day_view.dart';
 @immutable
 class ArrangedEvent {
   ArrangedEvent({
-    @required this.top,
-    @required this.left,
-    @required this.width,
-    @required this.height,
-    @required this.event,
+    required this.top,
+    required this.left,
+    required this.width,
+    required this.height,
+    required this.event,
   })  : assert(top != null),
         assert(left != null),
         assert(width != null),

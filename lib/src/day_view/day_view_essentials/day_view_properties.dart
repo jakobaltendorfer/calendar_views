@@ -6,7 +6,7 @@ import 'package:calendar_views/src/_internal_date_time/all.dart';
 @immutable
 class DayViewProperties {
   DayViewProperties({
-    @required List<DateTime> days,
+    required List<DateTime> days,
     this.minimumMinuteOfDay = 0,
     this.maximumMinuteOfDay = 1440,
   })  : assert(days != null),

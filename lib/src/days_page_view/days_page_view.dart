@@ -19,13 +19,12 @@ class DaysPageView extends CalendarPageView {
     Axis scrollDirection = CalendarPageView.default_scroll_direction,
     bool pageSnapping = CalendarPageView.default_page_snapping,
     bool reverse = CalendarPageView.default_reverse,
-    ScrollPhysics physics = CalendarPageView.default_physics,
-    DaysPageController controller,
-    @required this.pageBuilder,
+    ScrollPhysics? physics = CalendarPageView.default_physics,
+    DaysPageController? controller,
+    required this.pageBuilder,
     this.onDaysChanged,
   })  : this.controller = controller ?? new DaysPageController(),
         assert(controller != null),
-        assert(pageBuilder != null),
         super(
           scrollDirection: scrollDirection,
           pageSnapping: pageSnapping,
@@ -42,14 +41,14 @@ class DaysPageView extends CalendarPageView {
   /// Called whenever the page and thus displayed days change.
   ///
   /// Properties of days except for year, month and day are set to their default values.
-  final ValueChanged<List<DateTime>> onDaysChanged;
+  final ValueChanged<List<DateTime>>? onDaysChanged;
 
   @override
   CalendarPageViewState createState() => new _DaysPageViewState();
 }
 
 class _DaysPageViewState extends CalendarPageViewState<DaysPageView> {
-  PageDays _pageDays;
+  late PageDays _pageDays;
 
   @override
   void initState() {
@@ -110,8 +109,8 @@ class _DaysPageViewState extends CalendarPageViewState<DaysPageView> {
 
   Future<void> _animateToDay(
     DateTime day, {
-    @required Duration duration,
-    @required Curve curve,
+    required Duration duration,
+    required Curve curve,
   }) {
     Date d = new Date.fromDateTime(day);
     int page = _pageDays.pageOfDay(d);
@@ -129,7 +128,7 @@ class _DaysPageViewState extends CalendarPageViewState<DaysPageView> {
       List<Date> dates = _pageDays.daysOfPage(page);
       List<DateTime> days = _datesToDateTime(dates);
 
-      widget.onDaysChanged(days);
+      widget.onDaysChanged!(days);
     }
   }
 

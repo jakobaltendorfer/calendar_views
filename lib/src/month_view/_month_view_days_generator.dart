@@ -8,8 +8,8 @@ import 'day_of_month.dart';
 @immutable
 class MonthViewDaysGenerator {
   MonthViewDaysGenerator({
-    @required this.month,
-    @required this.firstWeekday,
+    required this.month,
+    required this.firstWeekday,
   })  : assert(month != null),
         assert(firstWeekday != null && isWeekdayValid(firstWeekday));
 

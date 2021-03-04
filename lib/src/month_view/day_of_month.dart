@@ -9,8 +9,8 @@ import 'month_view.dart';
 @immutable
 class DayOfMonth {
   DayOfMonth({
-    @required DateTime day,
-    @required DateTime month,
+    required DateTime day,
+    required DateTime month,
   })  : assert(day != null),
         assert(month != null),
         this.day = new DateTime(day.year, day.month, day.day),

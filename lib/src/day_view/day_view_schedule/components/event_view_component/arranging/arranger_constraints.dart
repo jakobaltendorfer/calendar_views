@@ -6,10 +6,10 @@ import 'package:calendar_views/day_view.dart';
 @immutable
 class ArrangerConstraints {
   ArrangerConstraints({
-    @required this.areaWidth,
-    @required this.areaHeight,
-    @required this.minuteOfDayFromTop,
-    @required this.heightOfDuration,
+    required this.areaWidth,
+    required this.areaHeight,
+    required this.minuteOfDayFromTop,
+    required this.heightOfDuration,
   })  : assert(areaWidth != null && areaWidth >= 0),
         assert(areaHeight != null && areaHeight >= 0),
         assert(minuteOfDayFromTop != null),

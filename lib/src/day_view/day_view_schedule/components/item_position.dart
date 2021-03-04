@@ -6,8 +6,8 @@ import 'package:calendar_views/day_view.dart';
 @immutable
 class ItemPosition {
   const ItemPosition({
-    @required this.top,
-    @required this.left,
+    required this.top,
+    required this.left,
   })  : assert(top != null),
         assert(left != null);
 

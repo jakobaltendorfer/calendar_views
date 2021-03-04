@@ -16,7 +16,7 @@ typedef Iterable<StartDurationItem> GetEventsOfDayCallback(
 @immutable
 class EventViewComponent implements ScheduleComponent {
   EventViewComponent({
-    @required this.getEventsOfDay,
+    required this.getEventsOfDay,
     this.eventArranger = const ChainsEventArranger(),
   })  : assert(getEventsOfDay != null),
         assert(eventArranger != null);
@@ -53,10 +53,10 @@ class EventViewComponent implements ScheduleComponent {
   }
 
   List<Positioned> _buildDay({
-    @required BuildContext context,
-    @required int dayNumber,
-    @required Iterable<StartDurationItem> events,
-    @required SchedulePositioner positioner,
+    required BuildContext context,
+    required int dayNumber,
+    required Iterable<StartDurationItem> events,
+    required SchedulePositioner positioner,
   }) {
     DayBuilder dayBuilder = new DayBuilder(
       context: context,

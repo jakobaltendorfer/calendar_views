@@ -8,9 +8,9 @@ import 'day_view_widths.dart';
 @immutable
 class HorizontalPositioner {
   HorizontalPositioner({
-    @required this.properties,
-    @required this.widths,
-    @required this.totalWidth,
+    required this.properties,
+    required this.widths,
+    required this.totalWidth,
   })  : assert(properties != null),
         assert(widths != null),
         assert(totalWidth != null && totalWidth >= 0);
@@ -276,7 +276,7 @@ class HorizontalPositioner {
 
   double get _constantDaySeparationAreaWidth => widths.daySeparationAreaWidth;
 
-  double daySeparationAreaWidth(int daySeparationNumber) {
+  double daySeparationAreaWidth(int? daySeparationNumber) {
     throwArgumentErrorIfInvalidDaySeparationNumber(daySeparationNumber);
 
     return _constantDaySeparationAreaWidth;
@@ -298,7 +298,7 @@ class HorizontalPositioner {
   /// Returns the daySeparationNumber of [DayViewArea.daySeparationArea] that is to the left of the given day.
   ///
   /// If there is no day separation to the left of day it returns null.
-  int daySeparationNumberLeftOfDay(int dayNumber) {
+  int? daySeparationNumberLeftOfDay(int dayNumber) {
     throwArgumentErrorIfInvalidDayNumber(dayNumber);
 
     if (isDaySeparationLeftOfDay(dayNumber)) {
@@ -311,7 +311,7 @@ class HorizontalPositioner {
   /// Returns the daySeparationNumber of [DayViewArea.daySeparationArea] that is to the right of the given day.
   ///
   /// If there is no day separation to the right of day it returns null.
-  int daySeparationNumberRightOfDay(int dayNumber) {
+  int? daySeparationNumberRightOfDay(int dayNumber) {
     throwArgumentErrorIfInvalidDayNumber(dayNumber);
 
     if (isDaySeparationRightOfDay(dayNumber)) {
@@ -375,12 +375,12 @@ class HorizontalPositioner {
 
   @protected
   void throwArgumentErrorIfInvalidDaySeparationNumber(
-    int daySeparationNumber,
+    int? daySeparationNumber,
   ) {
     if (properties.numberOfDaySeparations == 0) {
       throw new ArgumentError("There are no day separations (only one day)");
     } else {
-      if (daySeparationNumber < 0 ||
+      if (daySeparationNumber! < 0 ||
           daySeparationNumber >= properties.numberOfDaySeparations) {
         throw new ArgumentError.value(
           daySeparationNumber,

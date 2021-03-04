@@ -14,9 +14,9 @@ typedef Positioned StartDurationItemBuilder(
 /// Item with [startMinuteOfDay] and [duration] that can be provided to some implementations of [ScheduleComponent].
 class StartDurationItem {
   StartDurationItem({
-    @required this.startMinuteOfDay,
-    @required this.duration,
-    @required this.builder,
+    required this.startMinuteOfDay,
+    required this.duration,
+    required this.builder,
   })  : assert(
             startMinuteOfDay != null && isMinuteOfDayValid(startMinuteOfDay)),
         assert(duration != null && duration >= 0),
@@ -42,8 +42,8 @@ typedef Positioned TimeItemBuilder(
 /// Item with [minuteOfDay]  that can be provided to some implementations of [ScheduleComponent].
 class TimeItem {
   TimeItem({
-    @required this.minuteOfDay,
-    @required this.builder,
+    required this.minuteOfDay,
+    required this.builder,
   })  : assert(minuteOfDay != null && isMinuteOfDayValid(minuteOfDay)),
         assert(builder != null);
 
